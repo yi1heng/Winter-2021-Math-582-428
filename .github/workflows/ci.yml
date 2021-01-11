@@ -1,0 +1,14 @@
+name: CI
+on:
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build pdf
+        run: |
+          sudo apt-get install texlive latexmk -qq
+          latexmk --pdf main.tex
