@@ -1,0 +1,27 @@
+\chapter{Basics of Category Theory}
+
+A category $\Cscr$ consists of the following data:
+\begin{enumerate}
+  \item A collection of objects, denoted $\ob\Cscr$.
+  \item For every pair of objects $X,Y$, a collection of arrows $\Hom(X,Y)$.
+  \item A composition rule
+        \[ (f,g) \mapsto f \circ g : \Hom(Y,Z) \times \Hom(X,Y) \to \Hom(X,Z). \]
+  \item An identity moprhism $\one_{X} \in \Hom(X,X)$ for every object $X$.
+\end{enumerate}
+This data must satisfy the following axioms:
+\begin{enumerate}
+  \item Composition of morphisms is associative: $f \circ (g \circ h) = (f \circ g) \circ h$.
+  \item The identity morphism $\one_{X}$ is a two-sided identity for composition of morphisms.
+\end{enumerate}
+We will usually abuse the notation and write $X \in \Cscr$ to mean that $X$ is an object of $\Cscr$, i.e.~$X$ is a member of $\ob\Cscr$.
+If we wish to specify the category in $\Hom(X,Y)$, we will write $\Hom_{\Cscr}(X,Y)$ or $\Hom^{\Cscr}(X,Y)$, although $\Cscr$ will be left implicit whenever possible.
+Given $X,Y \in \Cscr$, we may also write $f : X \to Y$ to mean that $f$ is a member of $\Hom(X,Y)$ when $\Cscr$ is understood from context.
+Finally, we will often omit the $X$ from $\one_{X}$ and write simply $\one$ when it can be deduced from context.
+
+A morphism $f : X \to Y$ is called an \emph{isomorphism} if it has a two-sided inverse.
+Explicitly, this means that there exists a morphism $g : Y \to X$ such that $f \circ g = \one$ and $g \circ f = \one$.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End:
