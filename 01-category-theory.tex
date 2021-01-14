@@ -19,6 +19,9 @@ If we wish to specify the category in $\Hom(X,Y)$, we will write $\Hom_{\Cscr}(X
 Given $X,Y \in \Cscr$, we may also write $f : X \to Y$ to mean that $f$ is a member of $\Hom(X,Y)$ when $\Cscr$ is understood from context.
 Finally, we will often omit the $X$ from $\one_{X}$ and write simply $\one$ when it can be deduced from context.
 
+We say that $\Cscr$ is \emph{locally small} if $\Hom(X,Y)$ is a set for all $X,Y \in \Cscr$.
+We say that $\Cscr$ is \emph{small} if it is locally small and $\ob \Cscr$ is a set.
+
 A morphism $f : X \to Y$ is called an \emph{isomorphism} if it has a two-sided inverse.
 Explicitly, this means that there exists a morphism $g : Y \to X$ such that $f \circ g = \one$ and $g \circ f = \one$.
 
@@ -38,9 +41,15 @@ Explicitly, this means that there exists a morphism $g : Y \to X$ such that $f \
 \end{example}
 
 \begin{example}
+  Let $k$ be a field.
+  The collection of vector spaces with $k$-linear maps between them forms a category denoted $\Vect_{k}$.
+  Similarly, if $R$ is a ring, the category of (left) $R$-modules with $R$-linear morphisms forms a category denoted $R\Mod$.
+\end{example}
+
+\begin{example}
   Let $G$ be a group.
   We obtain a category $\star_{G}$ with one object $\star$ such that $\Hom(\star,\star) = G$.
-  The iddentity $\one_{\star}$ is the identity of $G$ and composition is the multiplication in $G$.
+  The identity $\one_{\star}$ is the identity of $G$ and composition is the multiplication in $G$.
 \end{example}
 
 \begin{example}
@@ -71,7 +80,7 @@ A \emph{functor}, denoted $\Fscr : \Cscr \to \Dscr$ consists of the following da
 and subject to the following axioms:
 \begin{enumerate}
   \item For all $X \in \Cscr$, one has $\Fscr(\one_{X}) = \one_{\Fscr X}$.
-  \item For all composable morphisms $f,g$ in $\Cscr$, one has $\Fscr(f \cric g) = \Fscr(f) \circ \Fscr(g)$.
+  \item For all composable morphisms $f,g$ in $\Cscr$, one has $\Fscr(f \circ g) = \Fscr(f) \circ \Fscr(g)$.
 \end{enumerate}
 
 A \emph{presheaf} $\Pscr$ on $\Cscr$ with values in $\Dscr$ is defined to be a functor $\Cscr^{\op} \to \Dscr$.
@@ -86,6 +95,57 @@ which satisfies
   \item For composable morphisms $f,g$, one has $\Pscr(f \circ g) = \Pscr(g) \circ \Pscr(f)$.
 \end{enumerate}
 Some sources use the word ``contravariant functor'' instead of ``presheaf.''
+
+\begin{exercise}
+  If $\Fscr$ is a functor and $f : X \to Y$ is an isomorphism in $\Cscr$ then $\Fscr(f)$ is an isomorphism.
+\end{exercise}
+
+\begin{example}
+  If $f : G \to H$ is a morphism of groups, then we can associate to $f$ a canonical functor $\star_{G} \to \star_{H}$.
+  \todo{Add details.}
+\end{example}
+
+\begin{example}
+  If $f : \Pcal_{1} \to \Pcal_{2}$ is a morphism of posets, then $f$ gives rise to a functor $\Pcal_{1} \to \Pcal_{2}$ when we consider $\Pcal_{i}$ as a category.
+  \todo{Add details.}
+\end{example}
+
+\begin{example}
+  Let $X$ be a topological space.
+  For an open set $U$, consider the vector space of real-valued continuous functions on $U$, denoted $\Ccal(U,\Rbb)$.
+  Consider the collection $\Uscr_{X}$ of open subsets of $X$ as a poset with respect to inclusion, hence as a category as described above.
+  For an inclusion of open sets $V \subset U$, we obtain a canonical \emph{restriction map}
+  \[ \rho_{U,V}: \Ccal(U,\Rbb) \to \Ccal(V,\Rbb) \]
+  defined by sending a continuous function on $U$ to its restriction to $V$.
+  This construction defines a \emph{presheaf} on $\Uscr_{X}$ with values in $\Vect_{\Rbb}$.
+\end{example}
+
+\begin{example}
+  Let $\Cscr$ be a locally small category and let $X$ be an object of $\Cscr$.
+  We define a functor $h^{X} : \Cscr \to \Set$ as follows.
+  For $Y, Z \in \Cscr$, $f : Y \to Z$, and $g \in \Hom(X,Y)$, we put
+  \[ h^{X}(Y) = \Hom(X,Y), \ h^{X}(f)(g) = f \circ g \in \Hom(X,Z). \]
+  \exer{It is straightforward to check that $h^{X}$, defined in this way, is indeed a functor.}
+
+  Similarly, we define a presheaf $h_{X}$ on $\Cscr$ with values in $\Set$ as follows.
+  For $Y,Z \in \Cscr$, $f : Y \to Z$ and $g \in \Hom(Z,X)$, we put
+  \[ h_{X}(Y) = \Hom(Y,X), \ h_{X}(f)(g) = g \circ f \in \Hom(Y,X). \]
+  \exer{It is straightforward to check that $h_{X}$, defined in this way, is indeed a presheaf.}
+\end{example}
+
+\begin{example}[The category of categories]
+  \todo{Add definition of composition of functors and identity functors.}
+  The category of categories has objects consisting of (small) categories and functors as morphisms.
+\end{example}
+
+\section{Natural transformations}
+
+\todo{Define morphisms of functors.}
+\todo{Define functor categories.}
+
+\section{The Yoneda Lemma}
+
+\todo{State and prove the Yoneda lemma.}
 
 %%% Local Variables:
 %%% mode: latex
