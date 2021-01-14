@@ -1,5 +1,6 @@
 \chapter{Basics of Category Theory}
 
+\section{Basics}
 A category $\Cscr$ consists of the following data:
 \begin{enumerate}
   \item A collection of objects, denoted $\ob\Cscr$.
@@ -35,6 +36,56 @@ Explicitly, this means that there exists a morphism $g : Y \to X$ such that $f \
   The category $\Group$ of groups.
   Its objects are groups, and, given two groups $G$ and $H$, a morphism $f : G \to H$ is a group homomorphism from $G$ to $H$.
 \end{example}
+
+\begin{example}
+  Let $G$ be a group.
+  We obtain a category $\star_{G}$ with one object $\star$ such that $\Hom(\star,\star) = G$.
+  The iddentity $\one_{\star}$ is the identity of $G$ and composition is the multiplication in $G$.
+\end{example}
+
+\begin{example}
+  Let $\Pcal$ be a poset.
+  We can consider $\Pcal$ as a category with objects $\Pcal$ and
+  \[ \Hom(a,b) = \begin{cases}
+      {\star} & a \le b \\
+      \varnothing & \text{otherwise}.
+    \end{cases}\]
+  \todo{Add details about composition and identities.}
+\end{example}
+
+\begin{example}
+  Let $\Cscr$ be a category.
+  Define $\Cscr^{\op}$ as the category whose objects are $\ob \Cscr$ and whose morphisms are given by
+  \[ \Hom^{\Cscr^{\op}}(X,Y) = \Hom^{\Cscr}(Y,X). \]
+  \todo{Add details about composition and identities.}
+\end{example}
+
+\section{Functors}
+
+Let $\Cscr, \Dscr$ be two categories.
+A \emph{functor}, denoted $\Fscr : \Cscr \to \Dscr$ consists of the following data:
+\begin{enumerate}
+  \item A function $\Fscr : \ob \Cscr \to \ob \Dscr$.
+  \item For every $X,Y \in \Cscr$, a function $\Fscr : \Hom(X,Y) \to \Hom(\Fscr X, \Fscr Y)$.
+\end{enumerate}
+and subject to the following axioms:
+\begin{enumerate}
+  \item For all $X \in \Cscr$, one has $\Fscr(\one_{X}) = \one_{\Fscr X}$.
+  \item For all composable morphisms $f,g$ in $\Cscr$, one has $\Fscr(f \cric g) = \Fscr(f) \circ \Fscr(g)$.
+\end{enumerate}
+
+A \emph{presheaf} $\Pscr$ on $\Cscr$ with values in $\Dscr$ is defined to be a functor $\Cscr^{\op} \to \Dscr$.
+Unfolding definitions, what this means is that $\Pscr$ consists of
+\begin{enumerate}
+  \item A function $\Pscr : \ob\Cscr \to \ob \Dscr$.
+  \item For all $X,Y \in \Cscr$, a function $\Pscr : \Hom(X,Y) \to \Hom(\Pscr(Y),\Pscr(X))$.
+\end{enumerate}
+which satisfies
+\begin{enumerate}
+  \item For all $X \in \Cscr$, $\Pscr(\one_{X}) = \one_{\Pscr X}$.
+  \item For composable morphisms $f,g$, one has $\Pscr(f \circ g) = \Pscr(g) \circ \Pscr(f)$.
+\end{enumerate}
+Some sources use the word ``contravariant functor'' instead of ``presheaf.''
 
 %%% Local Variables:
 %%% mode: latex
