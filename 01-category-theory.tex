@@ -61,7 +61,8 @@ Explicitly, this means that there exists a morphism $g : Y \to X$ such that $f \
     \end{cases}\]
   Let $a,b,c,d\in \Pcal$ be given. 
   Let $f:a\to b$, $g:b\to c$, $h:c\to d$ be in $Hom(a,b)$, $Hom(b,c)$ and $Hom(c,d)$, respectively.
-  Notice that $h\in Hom(x,y)$ iff $x\le y$. We have $f\in Hom(a,b)$ and $g\in Hom(b,c)$, then $a\le b$ and $b\le c$; as $\Pcal$ is a poset, we have $a\le c$ and therefore $g\circ f\in Hom(a,c)$. 
+  Notice that $h\in Hom(x,y)$ iff $x\le y$. 
+  We have $f\in Hom(a,b)$ and $g\in Hom(b,c)$, then $a\le b$ and $b\le c$; as $\Pcal$ is a poset, we have $a\le c$ and therefore $g\circ f\in Hom(a,c)$. 
   Clearly, $h\circ(g\circ f)=(h\circ g)\circ f$ since both exist.
   Now, as $b\le b$ (since $\Pcal$ is a poset), we have that $\star_b:b\to b$ is in $Hom(b,b)$. Clearly, we have that $g\circ \star_b=g$ and $\star_b\circ f=f$.
   One can think of $\star$ as the inclusion function in the partial ordering $\subseteq$ of a given set.
@@ -72,7 +73,8 @@ Explicitly, this means that there exists a morphism $g : Y \to X$ such that $f \
   Define $\Cscr^{\op}$ as the category whose objects are $\ob \Cscr$ and whose morphisms are given by
   \[ \Hom^{\Cscr^{\op}}(X,Y) = \Hom^{\Cscr}(Y,X). \]
   Let $f\in \Hom^{\Cscr^{\op}}(X,Y)$ and $g\in \Hom^{\Cscr^{\op}}(Y,Z)$. 
-  Define the composition $g\circ f$ in $\Hom^{\Cscr^{\op}}(X,Z)$ as the composition $f\circ g$ in $\Hom^{\Cscr(Z,X)$; this is well defined and is associative since composition and associativity are guaranteed in $\Hom^{\Cscr(Z,X)$.
+  Define the composition $g\circ f$ in $\Hom^{\Cscr^{\op}}(X,Z)$ as the composition $f\circ g$ in $\Hom^{\Cscr(Z,X)$
+  This is well defined and is associative since composition and associativity are guaranteed in $\Hom^{\Cscr(Z,X)$.
   Now, the identity in $\Hom^{\Cscr^{\op}}(X,X)$ is simply the identity in $\Hom^{\Cscr}(X,X)$.
 \end{example}
 
@@ -149,7 +151,8 @@ Some sources use the word ``contravariant functor'' instead of ``presheaf.''
 
 \begin{definition}
 Suppose that $\Ccal$ and $\Dcal$ are categories and let $F,G:\Ccal\to\Dcal$ be functors. 
-We define a \textit{natural transformation} as a rule $\zeta:\Fscr\to\Gscr$ which assigns a morphism $\zeta_X:\Fscr(X)\to \Gscr(X)$ to every $X\in \Ccal$, such that for every morphism $f:X\to Y$ in $Hom(X,Y)$, we have that the diagram
+We define a \textit{natural transformation} as a rule $\zeta:\Fscr\to\Gscr$ which assigns a morphism $\zeta_X:\Fscr(X)\to \Gscr(X)$ to every $X\in \Ccal$.
+This rule must satisfy that for every morphism $f:X\to Y$ in $Hom(X,Y)$, we have that the diagram
 
 \begin{tikzcd}
 \Fscr(X) \arrow[r, "\Fscr(f)"] \arrow[d, "\zeta_X"] & \Fscr(Y) \arrow[d, "\zeta_Y"] \\
