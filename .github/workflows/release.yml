@@ -22,8 +22,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ datestamp }}
-          release_name: ${{ datestamp }}
+          tag_name: ${{ GITHUB_ENV.datestamp }}
+          release_name: ${{ GITHUB_ENV.datestamp }}
           #tag_name: ${{ github.run_id }}
           #release_name: ${{ github.sha }}
           #release_name: ${{ github.run_id }}
