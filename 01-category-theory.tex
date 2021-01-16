@@ -56,10 +56,10 @@ Explicitly, this means that there exists a morphism $g : Y \to X$ such that $f \
   Let $\Pcal$ be a poset.
   We can consider $\Pcal$ as a category with objects $\Pcal$ and
   \[ \Hom(a,b) = \begin{cases}
-      {\star} & a \le b \\
+      \{\star\} & a \le b \\
       \varnothing & \text{otherwise}.
     \end{cases}\]
-  \todo{Add details about composition and identities.}
+  The identity $1_a=\star$ exists due to reflexivity of $\le$.  For $a,b,c\in \Pcal$ and morphisms $f:a\to b$ and $g: b\to c$, the composition $g\circ f=\star: a\to c$ exists by transitivity of $\le$
 \end{example}
 
 \begin{example}
