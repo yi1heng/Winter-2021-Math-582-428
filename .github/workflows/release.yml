@@ -13,14 +13,20 @@ jobs:
           sudo apt-get install texlive texlive-latex-recommended texlive-latex-extra --no-install-recommends -qq > /dev/null
           sudo apt-get install texlive-bibtex-extra texlive-pictures latexmk --no-install-recommends -qq > /dev/null
           latexmk --pdf main.tex
+      - name: Get current date
+        id: date
+        run: echo "name=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.run_id }}
-          release_name: ${{ github.sha }}
+          tag_name: ${{ steps.date.outputs.date }}
+          release_name: ${{ steps.date.outputs.date }}
+          #tag_name: ${{ github.run_id }}
+          #release_name: ${{ github.sha }}
+          #release_name: ${{ github.run_id }}
           body: |
             Release
           draft: false
