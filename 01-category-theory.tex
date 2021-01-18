@@ -111,7 +111,15 @@ Some sources use the word ``contravariant functor'' instead of ``presheaf.''
 
 \begin{example}
   If $f : G \to H$ is a morphism of groups, then we can associate to $f$ a canonical functor $\star_{G} \to \star_{H}$.
-  \todo{Add details.}
+  Define the functor $\Fscr_f$ associated to $f : G \to H$ as follows.
+  First recall that $\star_G$ and $\star_H$ both have a unique object, called $\star$.
+  Define $\Fscr_f(\star) = \star$.
+  Also, note that $\Hom^{\star_G}(\star,\star) = G$ and $\Hom^{\star_H}(\star,\star) = H$.
+  Define
+  \[ \Fscr_f : \Hom^{\star_G}(\star,\star) \to \Hom^{\star_H}(\star,\star) \] 
+  as $f : G \to H$.
+  The identity in $G$ resp.~$H$ correspond to the identity morphism while the multiplication in $G$ resp.~$H$ correspond to the composition of morphisms.
+  Since $f$ is a group homomorphism, we see that $\Fscr_f(\one) = \one$ and $\Fscr_f(g \circ h) = \Fscr_f(g) \circ \Fscr_f(h)$ since $f$ is a group homomorphism.
 \end{example}
 
 \begin{example}
