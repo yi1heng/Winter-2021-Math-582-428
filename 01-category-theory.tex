@@ -153,6 +153,7 @@ Some sources use the word ``contravariant functor'' instead of ``presheaf.''
 \begin{example}[The category of categories]
   \todo{Add definition of composition of functors and identity functors.}
   The category of categories has objects consisting of (small) categories and functors as morphisms.
+  Given categories $\Cscr$ and $\Dscr$, the collection of functors $\Cscr \to \Dscr$ will be denoted by $[\Cscr,\Dscr]$.
 \end{example}
 
 \section{Natural transformations}
@@ -170,11 +171,80 @@ This rule must satisfy that, for every morphism $f : X \to Y$ in $\Hom(X,Y)$, th
 commutes, that is, $\eta_Y \circ \Fscr(f) = \Gscr(f) \circ \eta_X$.
 \end{definition}
 
-\todo{Define functor categories.}
+\begin{definition}
+  Let $\Fscr,\Gscr : \Cscr \to \Dscr$ be two functors.
+  A natural transformation $\eta : \Fscr \to \Gscr$ is called a \emph{natural isomorphism} provided that $\eta_{X}$ is an isomorphism for all $X \in \Cscr$.
+\end{definition}
+
+\begin{exercise}
+  Let $\Cscr$ and $\Dscr$ be two categories.
+  The collection $[\Cscr,\Dscr]$ is naturally a category whose morphisms are natural transformations and whose isomorphisms are the natural isomorphisms.
+\end{exercise}
+
+\section{Representable Functors}
+
+A presheaf $\Fscr : \Cscr^\op \to \Set$ is called \emph{representable} provided that $\Fscr$ is naturally isomorphic to a presheaf of the form $h_{X}$ for some $X \in \Cscr$.
+If $\Fscr$ is reprresentable and $X \in \Cscr$ is such that $\eta_{X} : \Fscr \cong h_{X}$, then, letting $x := \eta_{X}(\one_{X}) \in \Fscr(X)$ we say that $\Fscr$ is \emph{representable by $(X,x)$}.
+In some cases, we leave $x$ implicit and simply say that $\Fscr$ is \emph{representable by $X$}.
+
+\begin{theorem}
+  Let $\Fscr : \Cscr^{\op} \to \Set$ be a presheaf, $X \in \Cscr$ be given, and $x \in \Fscr(X)$ an element.
+  The following are equivalent:
+  \begin{enumerate}
+    \item $\Fscr$ is representable by $(X,x)$.
+    \item The pair $(X,x)$ is \emph{universal}.
+          Namely, whenever $Y \in \Cscr$ and $y \in \Fscr(Y)$ are given, there exists a unique morphism $f : X \to Y$ such that $y = \Fscr(f)(y)$.
+  \end{enumerate}
+\end{theorem}
+\begin{proof}
+  \exer{This is left as an exercise to the reader.}
+\end{proof}
+
+\todo{Add the dual definitions and statements in terms of functors $\Cscr \to \Set$ and $h^{X}$ for $X \in \Cscr$.}
+
+\begin{example}
+  Let $\CRing$ denote the category of \emph{commutative rings}.
+  Consider the functor $\CRing \to \Set$ given on objects by $A \mapsto \{\star\}$ for a commutative ring $A$ (and the only thing that makes sense on morphisms).
+  Then this functor is representable by $\Zbb$.
+\end{example}
+
+\begin{example}
+  Consider the \emph{forgetful functor} $\CRing \to \Set$ which sends a ring $A$ to its underlying set and a morphism to the underlying function.
+  \exer{This functor is representable.}
+\end{example}
+
+\begin{example}
+  Consider the functor $\CRing \to \Set$ which sends a ring $A$ to the set
+  \[ \{ (x,y) \in A^{2} \ | \ x^{2} + y^{2} = 1 \} \]
+  and a morphism $f : A \to B$ to the function sending $(a,b)$ to $(f(a),f(b))$.
+  \exer{This is indeed a functor, and it representable.}
+\end{example}
+
+\begin{example}
+  Consider the functor $\CRing \to \Set$ which sends a ring $A$ to the set of units $A^{\times}$ and which does \exer{the obvious thing} on morphisms.
+  \exer{This functor is representable.}
+\end{example}
 
 \section{The Yoneda Lemma}
 
-\todo{State and prove the Yoneda lemma.}
+\begin{theorem}[The Yoneda Lemma]
+  Let $\Cscr$ be a locally small category, and $X$ an object of $\Cscr$.
+  Let $\Fscr : \Cscr^{\op} \to \Set$ be a presheaf and consider $h_{X} : \Cscr^{\op} \to \Set$.
+  Then $[h_{X},\Fscr] \cong \Fscr(X)$ and this isomorphism is functorial in both $X$ and $\Fscr$.
+\end{theorem}
+\begin{proof}
+  We first construct maps
+  \[ \Fscr(X) \to [h_{X},\Fscr], \ [h_{X},\Fscr] \to \Fscr(X) \]
+  as follows.
+  First, given $\eta \in [h_{X},\Fscr]$, we obtain an element of $\Fscr(X)$ as $\eta_{X}(\one_{X})$.
+  In the other direction, given $x \in \Fscr(X)$, we define $\eta_{x} : h_{X} \to \Fscr$ as the natural transformation given by setting
+  \[ \eta_{x,Y} : h_{X}(Y) \to \Fscr(Y) \]
+  to be the function
+  \[ h_{X}(Y) = \Hom(Y,X) \to \Fscr(Y), \ \ f \mapsto \Fscr(f)(x). \]
+  It is a simple matter of unfolding the definitions to \exer{check that these two maps are inverses of eachother, and that they are functorial in $X$ and $\Fscr$.}
+\end{proof}
+
+\todo{Add the dual statement in terms of functors $\Cscr \to \Set$ and $h^{X}$ for $X \in \Cscr$.}
 
 %%% Local Variables:
 %%% mode: latex
