@@ -156,6 +156,18 @@ Some sources use the word ``contravariant functor'' instead of ``presheaf.''
   Given categories $\Cscr$ and $\Dscr$, the collection of functors $\Cscr \to \Dscr$ will be denoted by $[\Cscr,\Dscr]$.
 \end{example}
 
+\section{Full and Faithful Functors}
+
+A functor $\Fscr : \Cscr \to \Dscr$ is called \emph{full} resp.~\emph{faithful} if for all $X,Y \in \Cscr$, the map
+\[ \Fscr : \Hom(X,Y) \to \Hom(\Fscr X, \Fscr Y) \]
+is surjective resp.~injective.
+A \emph{fully faithful functor} is a functor which is both full and faithful.
+A faithful functor can be considered as an \emph{embedding} of categories.
+
+Given a collection $S$ of objects of $\Cscr$, we can form the so-called \emph{full subcategory} of $\Cscr$, whose objects are $S$ and whose morphisms for $X,Y \in S$ are $\Hom^{\Cscr}(X,Y)$.
+In this case, there is a canonical \emph{inclusion functor} $\iota : S \hookrightarrow \Cscr$ \exer{defined in the obvious way}, and $\iota$ is fully faithful.
+In fact, as we will see later on, any fully faithful functor is \emph{equivalent} to such an inclusion (where the term ``equivalent'' has a precise meaning which will be discussed below).
+
 \section{Natural transformations}
 
 \begin{definition}
@@ -179,6 +191,42 @@ commutes, that is, $\eta_Y \circ \Fscr(f) = \Gscr(f) \circ \eta_X$.
 \begin{exercise}
   Let $\Cscr$ and $\Dscr$ be two categories.
   The collection $[\Cscr,\Dscr]$ is naturally a category whose morphisms are natural transformations and whose isomorphisms are the natural isomorphisms.
+\end{exercise}
+
+\section{Equivalence of Categories}
+
+A functor $\Fscr : \Cscr \to \Dscr$ is called an \emph{equivalence} provided that there exists a functor $\Gscr : \Dscr \to \Cscr$ such that $\Fscr \circ \Cscr \cong \one$ and $\Cscr \circ \Fscr \cong \one$.
+Any equivalence of categories is fully faithful.
+
+
+\begin{theorem}
+  Let $\Fscr : \Cscr \to \Dscr$ be a functor.
+  The following are equivalent:
+  \begin{enumerate}
+    \item $\Fscr$ is an equivalence.
+    \item $\Fscr$ is fully faithful and essentially surjective, i.e.~for all objects $Y \in \Dscr$ there exists an object $X \in \Cscr$ such that $\Fscr X \cong Y$.
+  \end{enumerate}
+\end{theorem}
+\begin{proof}
+  \exer{1 implies 2 is easy.}
+  We focus on the converse.
+  Construct $\Gscr : \Dscr \to \Cscr$ as follows.
+  For $Y \in \Dscr$, let $\Gscr(Y) \in \Cscr$ be some chosen object such that $\Fscr(\Gscr(Y)) \cong Y$.
+  For $f : Y \to Y'$, let $\Gscr(f) : \Gscr(Y) \to \Gscr(Y')$ be the \exer{unique morphism} satisfying $\Fscr(\Gscr(f)) = f$.
+  \exer{This indeed defines a functor $\Gscr$.}
+  Finally, it is \exer{straightforward} to check that $\Fscr \circ \Gscr \cong \one$ and $\Gscr \circ \Fscr \cong \one$.
+\end{proof}
+
+\begin{example}
+  Let $\Cscr$ be a category and $S \subset \ob \Cscr$ be a subcollection of objects such that every object of $\Cscr$ is isomorphihc to some object in $S$.
+  Let $\Sscr$ denote the full subcategory of $\Cscr$ spanned by $S$.
+  Then the inclusion $\iota : \Sscr \to \Cscr$ is an equivalence.
+  If every object in $\Cscr$ is isomorphic to a \emph{unique} element of $S$, we say that $\Sscr$ is a \emph{skeleton} of $\Cscr$.
+\end{example}
+
+\begin{exercise}
+  Read about the \emph{principle of equivalence in category theory.}
+  \href{https://ncatlab.org/nlab/show/principle+of+equivalence}{Here is a link to an article on the nLab}.
 \end{exercise}
 
 \section{Representable Functors}
@@ -244,8 +292,20 @@ In some cases, we leave $x$ implicit and simply say that $\Fscr$ is \emph{repres
   It is a simple matter of unfolding the definitions to \exer{check that these two maps are inverses of eachother, and that they are functorial in $X$ and $\Fscr$.}
 \end{proof}
 
-\todo{Add the dual statement in terms of functors $\Cscr \to \Set$ and $h^{X}$ for $X \in \Cscr$.}
+\begin{corollary}
+  Let $\Cscr$ be a locally small category.
+  The canonical functor
+  \[ h_{\square} : \Cscr \to [\Cscr^{\op},\Set] \]
+  is fully-faithful.
+  In particular, $\Cscr$ is equivalent to the full subcategory of $[\Cscr^{\op},\Set]$ spanned by representable presheaves.
+\end{corollary}
+\begin{proof}
+  By the Yoneda lemma, we have
+  \[ \Hom(h_{X},h_{Y}) \cong h_{Y}(X) = \Hom(X,Y). \]
+  \exer{This bijection is functorial in $X$ and $Y$.}
+\end{proof}
 
+\todo{Add the dual statements in terms of functors $\Cscr \to \Set$ and $h^{X}$ for $X \in \Cscr$.}
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "main"
