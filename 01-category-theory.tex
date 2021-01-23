@@ -142,16 +142,38 @@ Some sources use the word ``contravariant functor'' instead of ``presheaf.''
   We define a functor $h^{X} : \Cscr \to \Set$ as follows.
   For $Y, Z \in \Cscr$, $f : Y \to Z$, and $g \in \Hom(X,Y)$, we put
   \[ h^{X}(Y) = \Hom(X,Y), \ h^{X}(f)(g) = f \circ g \in \Hom(X,Z). \]
-  \exer{It is straightforward to check that $h^{X}$, defined in this way, is indeed a functor.}
+  To see that $h^X$ is a functor, let us first check that $h^X(\one_Y)=\one_{h^X(Y)}$.
+  We have that $h^X(\one_Y)(g)=\one_Y\circ g=g$, for any $g\in h^X(Y)=Hom(X,Y)$.
+  Now, let $A,B,C \in \Cscr$. For every $g:A\to B$ and $f:B\to C$, we have the following:
+  \[h^X(f\circ g)(k)=(f\circ g)\circ k=f\circ (g\circ k)=(h^X(f)\circ h^X(g))(k)\]
+for every $k\in Hom(X,A)$.
+Hence,$h^{X} : \Cscr \to \Set$ is a functor.
 
   Similarly, we define a presheaf $h_{X}$ on $\Cscr$ with values in $\Set$ as follows.
   For $Y,Z \in \Cscr$, $f : Y \to Z$ and $g \in \Hom(Z,X)$, we put
   \[ h_{X}(Y) = \Hom(Y,X), \ h_{X}(f)(g) = g \circ f \in \Hom(Y,X). \]
   \exer{It is straightforward to check that $h_{X}$, defined in this way, is indeed a presheaf.}
+    To see that $h_X$ is a presheaf, let us first check that $h_X(\one_Y)=\one_{h_X(Y)}$.
+  We have that $h_X(\one_Y)(g)=g\circ\one_Y=g$, for any $g\in h_X(Y)=Hom(Y,X)$.
+  Now, let $A,B,C \in \Cscr$. For every $g:A\to B$ and $f:B\to C$, we have the following:
+  \[h_X(f\circ g)(k)=k\circ (f\circ g)=(k\circ f)\circ g=(h_X(g)\circ h_X(f))(k)\]
+for every $k\in Hom(C,X)$.
+Hence,$h_{X} : \Cscr^{op} \to \Set$ is a presheaf.
+  
 \end{example}
 
 \begin{example}[The category of categories]
   \todo{Add definition of composition of functors and identity functors.}
+  Notice that the composition of functors can be defined as follows:
+  Let $\Ascr,\Bscr,\Cscr$ be categories. 
+  For functors $\Fscr : \Ascr \to \Bscr$ and $\Gscr : \Bscr \to \Cscr$, we define the composition $\Gscr\circ\Fscr(A)=\Gscr(\Fscr(A))$ on objects $A$ and $\Gscr\circ\Fscr(f)=\Gscr(\Fscr(f))$ on morphisms $f$.
+  Notice that this is indeed a functor since: 
+  \[\Gscr\circ\Fscr(\one_A)=\Gscr(\Fscr(\one_A))=\Gscr(\one_{\Fscr(\one_A)})=\one_{\Gscr(\Fscr(A))}=\one_{\Gscr\circ\Fscr(A)}\]
+  and 
+  \[\Gscr\circ\Fscr(g\circ f)=\Gscr(\Fscr(g)\circ\Fscr(f))=\Gscr\circ\Fscr(g)\circ \Gscr\circ\Fscr(f)\]
+  Additionally, the identity functor can be defined as:
+  \[Id_\Cscr(C)=C; Id_\Cscr(f)=f\]
+  for any $C,K \in \ob\Cscr$ and $f\in Hom(C,K)$.
   The category of categories has objects consisting of (small) categories and functors as morphisms.
   Given categories $\Cscr$ and $\Dscr$, the collection of functors $\Cscr \to \Dscr$ will be denoted by $[\Cscr,\Dscr]$.
 \end{example}
